@@ -1,151 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>荳记 The Beanz Heritage Kopitiam</title>
-    <style>
-        :root {
-            --bg-color: #120c0a;
-            --card-bg: #1c1411;
-            --accent-color: #d4a373;
-            --text-main: #f4eae1;
-            --text-muted: #a08a80;
-            --border-color: #2c1f1a;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>荳记 The Beanz Heritage Kopitiam · Puchong</title>
+<meta name="description" content="Chee cheong fun, kaya toast, yam cake and kopi in Taman Bukit Kuchai, Puchong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEEE9; --paper:#F8F9F6; --ink:#2B1B14; --muted:#6B5A50;
+  --red:#A63A2E; --red-ink:#FFF4EC; --green:#4F7A3A; --amber:#C98A1B; --tile:#E4E7E0; --line:#CFD3CA;
+  --serif:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:"Karla",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1C1411;--paper:#261B17;--ink:#F1E9DE;--muted:#B6A597;--red:#C4493B;--green:#8DB56F;--amber:#E0A83A;--tile:#2C211C;--line:#43342D}
+}
+:root[data-theme="dark"]{--bg:#1C1411;--paper:#261B17;--ink:#F1E9DE;--muted:#B6A597;--red:#C4493B;--green:#8DB56F;--amber:#E0A83A;--tile:#2C211C;--line:#43342D}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+/* mosaic floor tile strip */
+.tiles{height:26px;background:repeating-conic-gradient(var(--red) 0 25%,var(--tile) 0 50%) 0 0/26px 26px}
 
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-        }
+/* hero: the shop signboard */
+.hero{padding:44px 0 56px}
+.sign{background:var(--red);color:var(--red-ink);border-radius:6px;padding:34px 28px 30px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--red);text-align:center;animation:drop .8s cubic-bezier(.2,.8,.2,1) both}
+.sign h1{margin:0;font-family:var(--serif);font-weight:900;font-size:clamp(84px,24vw,190px);line-height:1;letter-spacing:.06em;padding-left:.06em}
+.sign p{margin:6px 0 0;font-weight:700;font-size:clamp(16px,3.4vw,24px);letter-spacing:.04em}
+.sign small{display:block;margin-top:4px;font-size:clamp(14px,2.6vw,18px);opacity:.9}
+@keyframes drop{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+.intro{display:grid;gap:28px;margin-top:44px;grid-template-columns:1.4fr 1fr;align-items:start}
+.intro h2{font-family:var(--serif);font-size:clamp(26px,4.4vw,38px);line-height:1.25;margin:0 0 12px}
+.intro p{margin:0;color:var(--muted);max-width:52ch}
+.facts{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:grid;gap:14px}
+.facts div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.facts div:last-child{border:0;padding:0}
+.facts dt{color:var(--muted);font-size:15px}
+.facts dd{margin:0;font-weight:700;text-align:right}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{display:inline-block;padding:13px 22px;border-radius:4px;font-weight:700;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--amber);border-color:var(--amber);color:#2B1B14}
 
-        h1 {
-            color: var(--accent-color);
-            margin: 0 0 0.5rem 0;
-            font-size: 2.5rem;
-        }
+/* menu board */
+section{padding:56px 0}
+h2.title{font-family:var(--serif);font-size:clamp(28px,5vw,42px);margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 28px}
+.board{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 24px 24px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 36px}
+.col h3{font-family:var(--serif);font-size:22px;margin:22px 0 4px;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:6px}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{padding:10px 0;border-bottom:1px dashed var(--line)}
+.col li b{display:block}
+.col li span{color:var(--muted);font-size:15px}
 
-        .tagline {
-            color: var(--text-muted);
-            font-style: italic;
-            margin: 0;
-        }
+/* chee cheong fun chooser */
+.build{margin-top:28px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:22px}
+.build h3{margin:0 0 4px;font-family:var(--serif);font-size:22px}
+.build p{margin:0 0 16px;color:var(--muted)}
+.group{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.group>span{width:100%;font-weight:700;font-size:15px}
+.chip{font:inherit;font-weight:600;padding:9px 16px;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.result{margin-top:6px;padding:14px 16px;border-left:6px solid var(--amber);background:var(--paper);font-weight:700}
+.result small{display:block;font-weight:400;color:var(--muted)}
 
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+/* reviews + visit */
+.rating{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.rating strong{font-family:var(--serif);font-size:72px;line-height:1;color:var(--amber)}
+.stars{color:var(--amber);font-size:26px;letter-spacing:3px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.visit address{font-style:normal;font-size:19px}
+footer{background:var(--ink);color:var(--bg);padding:28px 0;text-align:center;font-size:15px}
+footer .tiles{margin:-28px 0 24px}
 
-        .info-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
 
-        h2 {
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .item-name {
-            font-weight: bold;
-        }
-
-        .item-price {
-            color: var(--accent-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
-        }
-    </style>
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px}
+.brand{font-family:var(--serif);font-weight:900;font-size:22px;text-decoration:none;color:var(--red)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-weight:600;font-size:15px}
+.nav a.link{text-decoration:none}.nav a.link:hover{color:var(--red)}
+.nav .btn{padding:8px 16px;font-size:15px}
+[hidden]{display:none!important}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:700;background:var(--green);color:#fff}
+.badge.off{background:var(--red)}
+/* menu prices */
+.col li{display:grid;grid-template-columns:1fr auto;column-gap:14px}
+.col li span{grid-column:1/-1}
+.price{font-style:normal;font-weight:700;color:var(--green);white-space:nowrap}
+.set{margin-top:22px;padding:16px 18px;border:2px dashed var(--amber);border-radius:6px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.set b{font-family:var(--serif);font-size:20px}
+/* highlights */
+.hl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.hl div{background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--amber);border-radius:6px;padding:18px}
+.hl h3{margin:0 0 6px;font-family:var(--serif);font-size:20px}.hl p{margin:0;color:var(--muted);font-size:16px}
+/* hours + map */
+.hours{width:100%;border-collapse:collapse;margin:16px 0 22px;background:var(--paper);border:1px solid var(--line)}
+.hours th,.hours td{padding:10px 14px;text-align:left;border-bottom:1px dashed var(--line);font-weight:400}
+.hours td{text-align:right;font-weight:600}
+.hours tr.today{background:var(--amber);color:#2B1B14}.hours tr.today th,.hours tr.today td{font-weight:700}
+.map{display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;background:var(--paper)}
+.map svg{display:block;width:100%;height:auto}
+.map span{display:block;padding:12px 16px;font-weight:700;border-top:1px solid var(--line)}
+.m-bg{fill:var(--tile)}.m-blk{fill:var(--paper)}.m-road{stroke:var(--line);stroke-width:14;fill:none}.m-main{stroke:var(--amber);stroke-width:14;fill:none}
+.m-t{fill:var(--muted);font:600 13px var(--sans)}
+/* footer */
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;text-align:left;margin-bottom:22px}
+.fcols h4{margin:0 0 8px;font-family:var(--serif);font-size:18px}.fcols p,.fcols li{margin:0 0 4px;opacity:.85}.fcols ul{list-style:none;margin:0;padding:0}
+.copy{border-top:1px solid rgba(255,255,255,.2);padding-top:16px;opacity:.7;font-size:14px}
+@media (max-width:760px){.nav ul{display:none}.hl,.fcols{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .intro,.visit{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .board{padding:4px 18px 18px}
+}
+@media (prefers-reduced-motion:reduce){.sign{animation:none}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
+<nav class="nav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="#top" lang="zh">荳记</a>
+  <ul><li><a class="link" href="#menu">Menu</a></li><li><a class="link" href="#why">Why us</a></li><li><a class="link" href="#visit">Hours &amp; map</a></li></ul>
+  <a class="btn main" href="tel:+60102839807">Call to order</a>
+</div></nav>
+<div class="tiles" aria-hidden="true" id="top"></div>
 
-    <header>
-        <h1>荳记 The Beanz Heritage Kopitiam</h1>
-        <p class="tagline">A sleek, responsive dark-themed website prototype designed for Puchong, Malaysia.</p>
-    </header>
+<header class="hero">
+  <div class="wrap">
+    <div class="sign">
+      <h1 lang="zh">荳记</h1>
+      <p>The Beanz Heritage Kopitiam</p>
+      <small>Taman Bukit Kuchai, Puchong</small>
+    </div>
 
-    <main>
-        <div class="info-section">
-            <h2>Our Story</h2>
-            <p>Bringing traditional Kopitiam flavors into a modern, sophisticated atmosphere. Experience classic brew recipes and timeless local favorites right here in Puchong.</p>
+    <div class="intro">
+      <div>
+        <h2>Chee cheong fun, kaya toast and kopi, done the old way.</h2>
+        <p>A neighbourhood kopitiam serving soft rice noodle rolls, fragrant yam cake and coffee in flavours you won't find at every corner shop. Rated 4.9 by 196 customers on Google.</p>
+        <div class="btns">
+          <a class="btn main" href="#menu">See the menu</a>
+          <a class="btn" href="tel:+60102839807">Call 010-283 9807</a>
         </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Open</dt><dd>Tue–Sun, 7:30 am–3 pm <span class="badge" id="badge" hidden></span></dd></div>
+        <div><dt>Per person</dt><dd>RM 1–20</dd></div>
+        <div><dt>Google rating</dt><dd>4.9 (196)</dd></div>
+        <div><dt>Order</dt><dd>Pickup or delivery</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
 
-        <div class="info-section">
-            <h2>Signature Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <span class="item-name">Kopi Traditional (Hot)</span>
-                    <span class="item-price">RM 4.50</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-name">Char Kway Teow</span>
-                    <span class="item-price">RM 12.90</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-name">Kaya Butter Toast</span>
-                    <span class="item-price">RM 3.80</span>
-                </div>
-                <div class="menu-item">
-                    <span class="item-name">Nasi Lemak Ayam Goreng</span>
-                    <span class="item-price">RM 14.50</span>
-                </div>
-            </div>
+<div class="tiles" aria-hidden="true"></div>
+
+<main>
+<section id="menu">
+  <div class="wrap">
+    <h2 class="title">Menu</h2>
+    <p class="lead">Highlights from the kopitiam. Ask at the counter for today's full list and prices.</p>
+    <div class="board">
+      <div class="cols">
+        <div class="col">
+          <h3>Chee cheong fun</h3>
+          <ul>
+            <li><b>Scallion oil</b><i class="price">RM 5.50</i><span>Flat or round rolls, light and savoury</span></li>
+            <li><b>Sweet sauce</b><i class="price">RM 5.50</i><span>The classic Malaysian way</span></li>
+            <li><b>Curry chee cheong fun</b><i class="price">RM 6.50</i><span>Spicy curry over soft rolls</span></li>
+          </ul>
         </div>
-
-        <div class="info-section">
-            <h2>Location & Hours</h2>
-            <p>📍 Puchong, Selangor, Malaysia</p>
-            <p><strong>Tue - Sun:</strong> 7:30 am - 3:00 pm</p>
-            <p><strong>Monday:</strong> Closed</p>
+        <div class="col">
+          <h3>Kopi and drinks</h3>
+          <ul>
+            <li><b>Traditional kopi</b><i class="price">RM 2.80</i><span>Hot. Iced RM 3.30</span></li>
+            <li><b>Soybean coffee</b><i class="price">RM 4.20</i><span>Coffee with soy milk</span></li>
+            <li><b>Barley coffee</b><i class="price">RM 3.80</i><span>Roasted and gently sweet</span></li>
+            <li><b>Red bean milk tea</b><i class="price">RM 5.50</i><span>Milk tea with sweet red beans</span></li>
+          </ul>
         </div>
-    </main>
+        <div class="col">
+          <h3>Snacks and toast</h3>
+          <ul>
+            <li><b>Yam cake with dried shrimp</b><i class="price">RM 4.50</i><span>Soft, chewy and fragrant</span></li>
+            <li><b>Kaya toast</b><i class="price">RM 3.90</i><span>Two slices, toasted</span></li>
+            <li><b>Soft-boiled eggs</b><i class="price">RM 3.50</i><span>Two eggs, with soy sauce and pepper</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="set"><div><b>Breakfast set</b><br><span style="color:var(--muted)">Kaya toast, 2 soft-boiled eggs and a hot kopi</span></div><i class="price" style="font-size:22px">RM 8.90</i></div>
 
-    <footer>
-        <p>&copy; 2026 荳记 The Beanz Heritage Kopitiam. All rights reserved.</p>
-    </footer>
+      <div class="build">
+        <h3>Build your chee cheong fun</h3>
+        <p>Pick a noodle shape and a sauce, then tell the counter.</p>
+        <div class="group" id="noodle"><span>Noodle</span>
+          <button class="chip" aria-pressed="true" data-v="flat">Flat</button>
+          <button class="chip" aria-pressed="false" data-v="round">Round</button>
+        </div>
+        <div class="group" id="sauce"><span>Sauce</span>
+          <button class="chip" aria-pressed="true" data-v="scallion oil">Scallion oil</button>
+          <button class="chip" aria-pressed="false" data-v="sweet sauce">Sweet sauce</button>
+          <button class="chip" aria-pressed="false" data-v="spicy curry">Spicy curry</button>
+        </div>
+        <div class="result" aria-live="polite"><span id="out"></span><small>Show this to the counter when you order.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="why" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="title">Why locals come back</h2>
+    <div class="rating">
+      <strong>4.9</strong>
+      <div><div class="stars" aria-label="4.9 out of 5 stars">★★★★★</div><div>from 196 Google reviews</div></div>
+    </div>
+    <div class="hl">
+      <div><h3>Your noodle, your way</h3><p>Flat or round rolls with scallion oil, sweet sauce or spicy curry.</p></div>
+      <div><h3>Coffee with a twist</h3><p>Soybean coffee, barley coffee and red bean milk tea beside the classic kopi.</p></div>
+      <div><h3>Fresh, soft and chewy</h3><p>Fragrant yam cake with dried shrimp, kaya toast and soft-boiled eggs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="title">Hours and location</h2>
+    <p class="lead">Come by for breakfast or an early lunch. <span class="badge" id="badge2" hidden></span></p>
+    <div class="visit">
+      <div>
+        <address>39, Jalan 23,<br>Taman Bukit Kuchai,<br>47190 Puchong, Selangor</address>
+        <table class="hours" id="hours"><tbody>
+          <tr><th>Monday</th><td>Closed</td></tr>
+          <tr><th>Tuesday</th><td>7:30 am – 3:00 pm</td></tr>
+          <tr><th>Wednesday</th><td>7:30 am – 3:00 pm</td></tr>
+          <tr><th>Thursday</th><td>7:30 am – 3:00 pm</td></tr>
+          <tr><th>Friday</th><td>7:30 am – 3:00 pm</td></tr>
+          <tr><th>Saturday</th><td>7:30 am – 3:00 pm</td></tr>
+          <tr><th>Sunday</th><td>7:30 am – 3:00 pm</td></tr>
+        </tbody></table>
+        <div class="btns" style="margin-top:0">
+          <a class="btn main" href="tel:+60102839807">Call 010-283 9807</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=39+Jalan+23+Taman+Bukit+Kuchai+47190+Puchong+Selangor" target="_blank" rel="noopener">Get directions</a>
+        </div>
+      </div>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=39+Jalan+23+Taman+Bukit+Kuchai+47190+Puchong+Selangor" target="_blank" rel="noopener" aria-label="Open the shop location in Google Maps">
+        <svg viewBox="0 0 600 420" role="img" aria-label="Map placeholder showing the shop on Jalan 23">
+          <rect class="m-bg" width="600" height="420"/>
+          <rect class="m-blk" x="20" y="20" width="230" height="130" rx="8"/><rect class="m-blk" x="350" y="20" width="230" height="130" rx="8"/>
+          <rect class="m-blk" x="20" y="250" width="230" height="150" rx="8"/><rect class="m-blk" x="350" y="250" width="230" height="150" rx="8"/>
+          <path class="m-road" d="M0 200H600"/><path class="m-road" d="M300 0V420"/><path class="m-main" d="M0 200H600"/>
+          <text class="m-t" x="40" y="192">Jalan 23</text><text class="m-t" x="310" y="90">Taman Bukit Kuchai</text><text class="m-t" x="40" y="330">Puchong</text>
+          <g transform="translate(300 200)"><path d="M0 0C-28-34-30-40-30-52a30 30 0 0 1 60 0c0 12-2 18-30 52z" fill="#A63A2E"/><circle cy="-52" r="11" fill="#fff"/></g>
+        </svg>
+        <span>荳记 The Beanz Heritage Kopitiam · Open in Google Maps</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="tiles" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="fcols">
+      <div><h4>荳记 The Beanz Heritage Kopitiam</h4><p>Chee cheong fun, kaya toast, yam cake and kopi in Puchong.</p></div>
+      <div><h4>Find us</h4><p>39, Jalan 23, Taman Bukit Kuchai, 47190 Puchong, Selangor</p><p>010-283 9807</p></div>
+      <div><h4>Hours</h4><ul><li>Tue–Sun: 7:30 am – 3:00 pm</li><li>Monday: Closed</li></ul></div>
+    </div>
+    <div class="copy">© 2026 荳记 The Beanz Heritage Kopitiam. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var s={noodle:'flat',sauce:'scallion oil'};
+  var out=document.getElementById('out');
+  function show(){out.textContent='Chee cheong fun, '+s.noodle+' rolls, '+s.sauce;}
+  ['noodle','sauce'].forEach(function(id){
+    var g=document.getElementById(id);
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b)});
+      s[id]=b.dataset.v; show();
+    });
+  });
+  show();
+  try{
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kuala_Lumpur',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var g=function(t){return p.filter(function(x){return x.type===t})[0].value};
+    var day=g('weekday'),mins=(+g('hour')%24)*60+(+g('minute'));
+    var open=day!=='Monday'&&mins>=450&&mins<900;
+    document.querySelectorAll('#hours tr').forEach(function(r){if(r.firstChild.textContent===day)r.className='today'});
+    ['badge','badge2'].forEach(function(id){var b=document.getElementById(id);b.hidden=false;b.textContent=open?'Open now':'Closed now';b.className='badge'+(open?'':' off')});
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
